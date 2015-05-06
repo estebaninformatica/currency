@@ -1,6 +1,6 @@
 class TypeChange < ActiveRecord::Base
 	belongs_to :change
-	validates :name, :currency_from, :currency_to, :start_dt, :amount, presence: true
+	validates :change_id ,:name, :start_dt, :amount, presence: true
 
 #This method creates the new  "TypeChange" and get the last for complete the end_dt
   def generate

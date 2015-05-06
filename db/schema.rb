@@ -14,17 +14,18 @@
 ActiveRecord::Schema.define(version: 20150505190726) do
 
   create_table "changes", force: :cascade do |t|
-    t.integer  "currency_from", limit: 4
-    t.integer  "currency_to",   limit: 4
+    t.integer  "currency_id",      limit: 4
+    t.integer  "currency_from_id", limit: 4
+    t.integer  "currency_to_id",   limit: 4
     t.datetime "start_dt"
     t.datetime "end_dt"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   create_table "currencies", force: :cascade do |t|
-    t.text     "description",  limit: 65535
     t.string   "name",         limit: 255
+    t.text     "description",  limit: 65535
     t.string   "abbreviation", limit: 255
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false

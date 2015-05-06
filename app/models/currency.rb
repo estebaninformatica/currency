@@ -1,4 +1,4 @@
 class Currency < ActiveRecord::Base
-	has_many :changes, class_name: 'Change', foreign_key: 'currency_from' 
+	has_many :changes1, class_name: 'Change' 
 	validates :name, :description, :abbreviation, presence: true 
 end
