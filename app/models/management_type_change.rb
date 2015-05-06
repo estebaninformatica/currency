@@ -1,0 +1,3 @@
+class ManagementTypeChange
+
+end
