@@ -1,5 +1,6 @@
 class TypeChangesController < ApplicationController
   before_action :set_type_change, only: :show 
+
   def index
     @typeChanges=TypeChange.all
   end
@@ -9,6 +10,12 @@ class TypeChangesController < ApplicationController
 
   def new
     @typeChange=TypeChange.new
+    @currencies=Currency.all
+  end
+
+  def create
+    params[:currency_from]
+  
   end
 
   private
