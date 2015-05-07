@@ -23,6 +23,10 @@ ActiveRecord::Schema.define(version: 20150505190726) do
     t.datetime "updated_at",                 null: false
   end
 
+  add_index "changes", ["currency_from_id"], name: "index_changes_on_currency_from_id", using: :btree
+  add_index "changes", ["currency_id"], name: "index_changes_on_currency_id", using: :btree
+  add_index "changes", ["currency_to_id"], name: "index_changes_on_currency_to_id", using: :btree
+
   create_table "currencies", force: :cascade do |t|
     t.string   "name",         limit: 255
     t.text     "description",  limit: 65535
