@@ -1,0 +1,2 @@
+module TypeChangesHelper
+end
