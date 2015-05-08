@@ -12,11 +12,6 @@
 <% end %>
 
 <div class="field">
-  <%= f.label :change_id %><br>
-  <%= f.text_field :change_id %>
-</div>
-
-<div class="field">
   <%= select_tag(:currency_from_id, options_for_select(@currencies.map { |c| [c.name, c.id]  })) %>
   <%= select_tag(:currency_to_id, options_for_select(@currencies.map { |c| [c.name, c.id]  })) %>
 </div>
