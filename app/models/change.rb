@@ -13,7 +13,7 @@ class Change < ActiveRecord::Base
 
   def validate_exist
     if not Change.where(currency_from_id: currency_from_id , currency_to_id: currency_to_id).empty?
-      errors.add(:id, "This chage exist")
+      errors.add(:id, "This change exist")
     end
   end
 

@@ -12,8 +12,8 @@
 <% end %>
 
 <div class="field">
-  <%= select_tag(:currency_from_id, options_for_select(@currencies.map { |c| [c.name, c.id]  })) %>
-  <%= select_tag(:currency_to_id, options_for_select(@currencies.map { |c| [c.name, c.id]  })) %>
+  <%= select_tag( :currency_from_id, options_for_select(@currencies.map { |c| [c.name, c.id]  }) ,:id => 'type_change_change_currency_from', :name => "type_change[currency_from]") %>
+  <%= select_tag( :currency_to_id, options_for_select(@currencies.map { |c| [c.name, c.id]  }) , :id => 'type_change_change_currency_to', :name => "type_change[currency_to]") %>
 </div>
 <div class="field">
   <%= f.label :name %><br>
