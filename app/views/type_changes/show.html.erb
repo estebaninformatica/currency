@@ -1,25 +1,32 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-md-2">
+    <p id="notice"><%= notice %></p>
+    <div class="field">
+    <p>
+      <strong>Currency From:</strong>
+      <%= @typeChange.change.currency_from.name %>
+    </p>
+    </div>
+    <p>
+      <strong>Currency To:</strong>
+      <%= @typeChange.change.currency_to.name %>
+    </p>
 
-<p>
-  <strong>Currency From:</strong>
-  <%= @typeChange.change.currency_from.name %>
-</p>
-
-<p>
-  <strong>Currency To:</strong>
-  <%= @typeChange.change.currency_to.name %>
-</p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @typeChange.name %>
-</p>
-
-
-<p>
-  <strong>Amount:</strong>
-  <%= @typeChange.amount %>
-</p>
+    <p>
+      <strong>Name:</strong>
+      <%= @typeChange.name %>
+    </p>
 
 
-<%= link_to 'Back', type_changes_path %>
+    <p>
+      <strong>Amount:</strong>
+      <%= @typeChange.amount %>
+    </p>
+
+
+    <%= link_to 'Back', type_changes_path , {:class => "btn btn-default"} %>
+  </div>
+  <div class="col-md-2"></div>
+  <div class="col-md-4"></div>
+  <div class="col-md-4"></div>
+</div>

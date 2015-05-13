@@ -24,7 +24,11 @@ class TypeChangesController < ApplicationController
         format.html { redirect_to @typeChange, notice: 'Type change was successfully created.' }
         #format.json { render :show, status: :created, location: @currency }
       else
-        format.html { render :new }
+
+        format.html { 
+          set_currencies 
+          render :new
+        }
         #format.json { render json: @currency.errors, status: :unprocessable_entity }
       end
     end

@@ -12,5 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require_tree .
+//= require bootstrap.min
+//= require select2
+//= require select2_locale_es
+
+$(document).ready(function() { $(".select2").select2(); });

@@ -4,7 +4,6 @@ class TypeChange < ActiveRecord::Base
 	belongs_to 	   :change
 	
 	after_create	 :add_change, :set_start_dt, :type_change_close
-	
 
 	attr_accessor :currency_from, :currency_to
 	
@@ -45,10 +44,6 @@ class TypeChange < ActiveRecord::Base
 			typeChangeClose.end_dt=self.start_dt
 			typeChangeClose.save
 		end
-	end
-
-	def type_change_close2
-		self.end_dt=Time.now
 	end
 
 	def set_start_dt
