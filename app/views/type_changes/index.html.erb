@@ -1,8 +1,9 @@
+
 <p id="notice"><%= notice %></p>
 
 <h1>Listing Type Changes</h1>
 
-<table>
+<table class="table table-hover">
   <thead>
     <tr>
       <th>Currency From</th>
@@ -17,21 +18,20 @@
 
   <tbody>
     <% @typeChanges.each do |typeChange| %>
-      <tr>
-        <td><%= typeChange.change.currency_from.name %></td>
-        <td><%= typeChange.change.currency_to.name %></td>
-        <td><%= typeChange.name %></td>
-        <td><%= typeChange.start_dt %></td>
-        <td><%= typeChange.end_dt %></td>
-        <td><%= typeChange.amount %></td>
-        <td><%= link_to 'Show', typeChange %></td>
-      
+    <tr>
+      <td><%= typeChange.change.currency_from.name %></td>
+      <td><%= typeChange.change.currency_to.name %></td>
+      <td><%= typeChange.name %></td>
+      <td><%= typeChange.start_dt %></td>
+      <td><%= typeChange.end_dt %></td>
+      <td><%= typeChange.amount %></td>
+      <td><%= link_to 'Show', typeChange , {:class => "btn btn-default"} %></td>
 
-      </tr>
+
+    </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Type Changes', new_type_change_path %>
+<%= link_to 'New Type Changes', new_type_change_path ,  {:class => "btn btn-default"} %>
