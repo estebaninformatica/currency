@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150505190726) do
+ActiveRecord::Schema.define(version: 20150511182627) do
+
+  create_table "change_type_changes", force: :cascade do |t|
+    t.integer  "change_id",      limit: 4
+    t.integer  "all_change_id",  limit: 4
+    t.integer  "type_change_id", limit: 4
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  add_index "change_type_changes", ["all_change_id"], name: "index_change_type_changes_on_all_change_id", using: :btree
+  add_index "change_type_changes", ["change_id"], name: "index_change_type_changes_on_change_id", using: :btree
+  add_index "change_type_changes", ["type_change_id"], name: "index_change_type_changes_on_type_change_id", using: :btree
 
   create_table "changes", force: :cascade do |t|
     t.integer  "currency_id",      limit: 4

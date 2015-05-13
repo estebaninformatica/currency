@@ -1,6 +1,7 @@
 class TypeChangesController < ApplicationController
   before_action :set_type_change, only: [:show , :edit]
   before_action :set_currencies, only: [:new, :edit]
+
   def index
     @typeChanges=TypeChange.all
   end
@@ -16,9 +17,8 @@ class TypeChangesController < ApplicationController
   end
 
   def create
-    #byebug  
     @typeChange=TypeChange.new(type_changes_params)
-    #@typeChange.change = Change.new(changes_params) 
+
     respond_to do |format|
       if @typeChange.save
         format.html { redirect_to @typeChange, notice: 'Type change was successfully created.' }

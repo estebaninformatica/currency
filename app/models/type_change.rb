@@ -1,38 +1,58 @@
 class TypeChange < ActiveRecord::Base
-	belongs_to :change
-	validates :change_id ,:name, :start_dt, :amount, presence: true
-#Def initialize
-def initialize(params = {})
+	#has_many	:change_type_changes
+	#has_many 	:all_changes , through: :change_type_changes
+	belongs_to 	   :change
 	
-	@change_id=getChange_id(params[:currency_from], params[:currency_to])
+	after_create	 :add_change, :set_start_dt, :type_change_close
 	
-end
 
-#This method get the last TypeChange and completed the end_dt
-def generate
-	lastTyChan=lastTypeChange
-	if  not lastTyChan.nil?
-		lastTyChan.end_dt=Time.now
-		lastTyChan.save
+	attr_accessor :currency_from, :currency_to
+	
+	validates  :name, :start_dt, :amount, presence: true
+
+	#add change to list of changes
+	def add_change
+		if change_exist?
+			self.change = Change.where(currency_from_id: currency_from , currency_to_id: currency_to).take 
+		else
+			chan=create_change
+			self.change = chan
+		end
+		self.save
 	end
-end
 
-def lastTypeChange
-	TypeChange.where("change_id = ? AND start_dt < ?" , change_id, start_dt ).order(start_dt: :desc).take
-end
+	#Find change
+	def change_exist?
+		not Change.where(currency_from_id: currency_from , currency_to_id: currency_to  ).empty?
+	end
 
-#Get change if exist, else it is created
-def getChange_id(currency_from_id, currency_to_id)
-	
-	if Change.where(currency_from_id: currency_from_id , currency_to_id: currency_to_id).empty?
 	#Create Change
-		change=Change.new({:currency_from_id => currency_from_id ,:currency_to_id => currency_to_id ,:start_dt =>Time.now ,:end_dt=>Time.now})
-	else
-	#Exist, get change
-		change=Change.where(currency_from_id: currency_from_id , currency_to_id: currency_to_id).take
+	def create_change
+		change=Change.new({:currency_from_id => currency_from ,:currency_to_id => currency_to ,:start_dt => Date.today})
+		change.save
+		#change.change_close
+		change
 	end
-	return change
 
-end
+	def type_change_exist?
+		not TypeChange.where("change_id = ? AND name = ? AND start_dt < ? AND end_dt is null", change_id, name, start_dt ).empty?
+	end
 
+	#close a type change
+	def type_change_close
+		if type_change_exist?
+			typeChangeClose=TypeChange.where("change_id = ? AND name = ? AND start_dt < ? AND end_dt is null" , change_id, name , start_dt ).take
+			typeChangeClose.end_dt=self.start_dt
+			typeChangeClose.save
+		end
+	end
+
+	def type_change_close2
+		self.end_dt=Time.now
+	end
+
+	def set_start_dt
+		self.start_dt=Time.now
+		self.save
+	end
 end
