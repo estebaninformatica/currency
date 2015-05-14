@@ -22,7 +22,7 @@ class TypeChange < ActiveRecord::Base
 
 	#Find change
 	def change_exist?
-		not Change.where(currency_from_id: currency_from , currency_to_id: currency_to  ).empty?
+		not Change.where(currency_from_id: currency_from , currency_to_id: currency_to ).empty?
 	end
 
 	#Create Change

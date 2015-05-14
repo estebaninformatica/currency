@@ -3,7 +3,7 @@ class Change < ActiveRecord::Base
   belongs_to :currency_from, class_name: "Currency" 
   #has_many   :change_type_changes
   #has_many   :type_changes , through: :change_type_changes
-  has_many   :type_changes
+#  has_many   :type_changes
 
   validates :currency_from, :currency_to, :start_dt, presence: true
   validate :validate_distinct_currency
@@ -28,8 +28,12 @@ class Change < ActiveRecord::Base
   #     chanClose.save
   #   end  
   # end
-  def current
-    self.type_changes.last
-  end
+  # def current
+  #   self.type_changes.last
+  # end
+
+  # def current_for_date(date)
+  #   self.type_changes.reverse.detect {|n| Date.parse(n.start_dt.to_s) <= Date.parse(date)}
+  # end
 
 end

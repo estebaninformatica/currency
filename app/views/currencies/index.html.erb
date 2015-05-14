@@ -2,7 +2,7 @@
 
 <h1>Listing Currencies</h1>
 
-<table>
+<table class="table table-hover">
   <thead>
     <tr>
       <th>Description</th>
@@ -18,9 +18,9 @@
         <td><%= currency.description %></td>
         <td><%= currency.name %></td>
         <td><%= currency.abbreviation %></td>
-        <td><%= link_to 'Show', currency %></td>
-        <td><%= link_to 'Edit', edit_currency_path(currency) %></td>
-        <td><%= link_to 'Destroy', currency, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', currency , {:class => "btn btn-default"} %></td>
+        <td><%= link_to 'Edit', edit_currency_path(currency) , :class => "btn btn-default" %></td>
+        <td><%= link_to 'Destroy', currency, method: :delete, data: {confirm: 'Are you sure?'}, :class => "btn btn-default" %></td>
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +28,4 @@
 
 <br>
 
-<%= link_to 'New Currency', new_currency_path %>
+<%= link_to 'New Currency', new_currency_path , :class => "btn btn-default" %>
