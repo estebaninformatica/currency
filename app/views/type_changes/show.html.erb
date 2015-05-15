@@ -3,24 +3,18 @@
     <p id="notice"><%= notice %></p>
     <div class="field">
     <p>
-      <strong>Currency From:</strong>
-      <%= @typeChange.change.currency_from.name %>
-    </p>
-    </div>
-    <p>
-      <strong>Currency To:</strong>
-      <%= @typeChange.change.currency_to.name %>
-    </p>
-
-    <p>
       <strong>Name:</strong>
       <%= @typeChange.name %>
     </p>
 
+    <p>
+      <strong>Desde:</strong>
+      <%= @typeChange.start_dt %>
+    </p>
 
     <p>
-      <strong>Amount:</strong>
-      <%= @typeChange.amount %>
+      <strong>Hasta:</strong>
+      <%= @typeChange.end_dt %>
     </p>
 
 

@@ -12,15 +12,6 @@
       </ul>
     </div>
     <% end %>
-
-    <div class="field">
-      <label>Currency From</label>
-      <%= select_tag( :currency_from_id, options_for_select(@currencies.map { |c| [c.name, c.id]  } ) ,:id => 'type_change_change_currency_from', :name => "type_change[currency_from]" , :class => "select2" ) %>
-    </div>
-    <div class="field">
-       <label>Currency To</label>
-      <%= select_tag( :currency_to_id, options_for_select(@currencies.map { |c| [c.name, c.id]  } ) , :id => 'type_change_change_currency_to', :name => "type_change[currency_to]" , :class => "select2" ) %>
-    </div>
     <div class="field">
       <%= f.label :name %><br>
       <%= f.text_area :name %>
@@ -28,10 +19,6 @@
     <div class="field">
       <%= f.label :start_dt %><br>
       <%= f.date_field :start_dt  ,:value => Date.today.strftime("%F") %>
-    </div>
-    <div class="field">
-      <%= f.label :amount %><br>
-      <%= f.text_field :amount %>
     </div>
     <div class="actions">
       <%= f.submit  :class => "btn btn-default" %>

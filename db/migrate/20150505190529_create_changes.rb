@@ -3,6 +3,8 @@ class CreateChanges < ActiveRecord::Migration
     create_table :changes do |t|
       t.references :currency , :currency_from , index: true
       t.references :currency , :currency_to , index: true
+      t.references :type_change , index: true
+
       t.datetime :start_dt
       t.datetime :end_dt
 

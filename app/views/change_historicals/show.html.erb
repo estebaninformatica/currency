@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Currency From:</strong>
+  <%= @changeHistorical.change.currency_from.name %>
+</p>
+
+<p>
+  <strong>Currency To:</strong>
+  <%= @changeHistorical.change.currency_to.name %>
+</p>
+
+<p>
+  <strong>Type change:</strong>
+  <%= @changeHistorical.change.type_change.name %>
+</p>
+
+<p>
+  <strong>Start dt:</strong>
+  <%= @changeHistorical.start_dt %>
+</p>
+
+<p>
+  <strong>End dt:</strong>
+  <%= @changeHistorical.end_dt %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @changeHistorical.amount %>
+</p>
+
+
+<%= link_to 'Edit', edit_change_historical_path(@changeHistorical) , :class => "btn btn-default" %> |
+<%= link_to 'Back', change_historicals_path , :class => "btn btn-default"%>

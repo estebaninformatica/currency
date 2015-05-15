@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Change Current</h1>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Currency from</th>
+      <th>Currency to</th>
+      <th>Type change</th>
+      <th>Desde</th>
+      <th>Hasta</th>
+      <th>Relación</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @changes.each do | change | %>
+    <tr>
+      <td><%= change.currency_from.name %></td>
+      <td><%= change.currency_to.name %></td>
+      <td><%= change.type_change.name %></td>
+      <td><%= change.current.start_dt unless change.current.nil? %></td>
+      <td><%= change.current.end_dt unless change.current.nil? %></td>
+      <td><%= change.current.amount unless change.current.nil? %></td>
+      <td><%= link_to "add", '#', :onclick => 'hide_form( change.id)' %></td>
+      <td><%= form_tag( controller: "change_historicals" ,action: "create", method: "POST", :id =>change.id ) do %>
+        <%= label_tag(:amount, "Amount") %>
+        <%= text_field( :change_historical, :amount ) %>
+        <%= hidden_field(:change_historical, :change_id ,:value => change.id, ) %>
+        <%= submit_tag("Save") %>
+        <% end %></td>
+
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+  <%= link_to 'New change', new_change_path ,  :class => "btn btn-default" %>

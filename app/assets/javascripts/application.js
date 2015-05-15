@@ -18,3 +18,15 @@
 //= require select2_locale_es
 
 $(document).ready(function() { $(".select2").select2(); });
+
+function hide_form (id_form) {
+  id_form='#'+id_form
+  $(id_form).hide(); //Initially form wil be hidden.  
+}
+
+function unhide_form (id_form) {
+  id_form='#' + id_form
+  $(id_form).show();//Form shows on button click
+}
+
+

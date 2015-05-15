@@ -6,12 +6,9 @@
 <table class="table table-hover">
   <thead>
     <tr>
-      <th>Currency From</th>
-      <th>Currency To</th>
       <th>Description</th>
       <th>Desde</th>
       <th>Hasta</th>
-      <th>Valor</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -19,12 +16,9 @@
   <tbody>
     <% @typeChanges.each do |typeChange| %>
     <tr>
-      <td><%= typeChange.change.currency_from.name %></td>
-      <td><%= typeChange.change.currency_to.name %></td>
       <td><%= typeChange.name %></td>
       <td><%= typeChange.start_dt %></td>
       <td><%= typeChange.end_dt %></td>
-      <td><%= typeChange.amount %></td>
       <td><%= link_to 'Show', typeChange , :class => "btn btn-default" %></td>
 
 

@@ -11,24 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150511182627) do
+ActiveRecord::Schema.define(version: 20150514163953) do
 
-  create_table "change_type_changes", force: :cascade do |t|
-    t.integer  "change_id",      limit: 4
-    t.integer  "all_change_id",  limit: 4
-    t.integer  "type_change_id", limit: 4
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+  create_table "change_historicals", force: :cascade do |t|
+    t.integer  "change_id",  limit: 4
+    t.datetime "start_dt"
+    t.datetime "end_dt"
+    t.float    "amount",     limit: 24
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
   end
 
-  add_index "change_type_changes", ["all_change_id"], name: "index_change_type_changes_on_all_change_id", using: :btree
-  add_index "change_type_changes", ["change_id"], name: "index_change_type_changes_on_change_id", using: :btree
-  add_index "change_type_changes", ["type_change_id"], name: "index_change_type_changes_on_type_change_id", using: :btree
+  add_index "change_historicals", ["change_id"], name: "index_change_historicals_on_change_id", using: :btree
 
   create_table "changes", force: :cascade do |t|
     t.integer  "currency_id",      limit: 4
     t.integer  "currency_from_id", limit: 4
     t.integer  "currency_to_id",   limit: 4
+    t.integer  "type_change_id",   limit: 4
     t.datetime "start_dt"
     t.datetime "end_dt"
     t.datetime "created_at",                 null: false
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 20150511182627) do
   add_index "changes", ["currency_from_id"], name: "index_changes_on_currency_from_id", using: :btree
   add_index "changes", ["currency_id"], name: "index_changes_on_currency_id", using: :btree
   add_index "changes", ["currency_to_id"], name: "index_changes_on_currency_to_id", using: :btree
+  add_index "changes", ["type_change_id"], name: "index_changes_on_type_change_id", using: :btree
 
   create_table "currencies", force: :cascade do |t|
     t.string   "name",         limit: 255
@@ -48,15 +49,12 @@ ActiveRecord::Schema.define(version: 20150511182627) do
   end
 
   create_table "type_changes", force: :cascade do |t|
-    t.integer  "change_id",  limit: 4
     t.string   "name",       limit: 255
     t.datetime "start_dt"
     t.datetime "end_dt"
-    t.float    "amount",     limit: 24
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
 
-  add_index "type_changes", ["change_id"], name: "index_type_changes_on_change_id", using: :btree
-
+  add_foreign_key "change_historicals", "changes"
 end

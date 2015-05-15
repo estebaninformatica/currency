@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Currency From:</strong>
+  <%= @change.currency_from.name %>
+</p>
+
+<p>
+  <strong>Currency To:</strong>
+  <%= @change.currency_to.name %>
+</p>
+
+<p>
+  <strong>Type change:</strong>
+  <%= @change.type_change.name %>
+</p>
+
+<p>
+  <strong>Start dt:</strong>
+  <%= @change.start_dt %>
+</p>
+
+<p>
+  <strong>End dt:</strong>
+  <%= @change.end_dt %>
+</p>
+
+
+<%= link_to 'Edit', edit_change_path(@change) , :class => "btn btn-default" %> |
+<%= link_to 'Back', changes_path , :class => "btn btn-default"%>
