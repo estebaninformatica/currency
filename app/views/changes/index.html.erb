@@ -24,14 +24,13 @@
       <td><%= change.current.start_dt unless change.current.nil? %></td>
       <td><%= change.current.end_dt unless change.current.nil? %></td>
       <td><%= change.current.amount unless change.current.nil? %></td>
-      <td><%= link_to "add", '#', :onclick => 'hide_form( change.id)' %></td>
-      <td><%= form_tag( controller: "change_historicals" ,action: "create", method: "POST", :id =>change.id ) do %>
+      <td><%= link_to "Add change", '#', :onclick => "unhide_form(#{change.id})" ,:class => "btn btn-default"%></td>
+      <td id="<%= change.id %>" hidden ><%= form_tag( controller: "change_historicals" ,action: "create", method: "POST" ) do %>
         <%= label_tag(:amount, "Amount") %>
         <%= text_field( :change_historical, :amount ) %>
-        <%= hidden_field(:change_historical, :change_id ,:value => change.id, ) %>
-        <%= submit_tag("Save") %>
+        <%= hidden_field(:change_historical, :change_id ,:value => change.id ) %>
+        <%= submit_tag("Save", :class => "btn btn-default") %>
         <% end %></td>
-
       </tr>
       <% end %>
     </tbody>

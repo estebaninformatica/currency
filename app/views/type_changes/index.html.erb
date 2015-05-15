@@ -20,6 +20,8 @@
       <td><%= typeChange.start_dt %></td>
       <td><%= typeChange.end_dt %></td>
       <td><%= link_to 'Show', typeChange , :class => "btn btn-default" %></td>
+      <td><%= link_to 'Edit', edit_type_change_path(typeChange) , :class => "btn btn-default" %></td>
+        <td><%= link_to 'Destroy', typeChange, method: :delete, data: {confirm: 'Are you sure?'}, :class => "btn btn-default" %></td>
 
 
     </tr>
