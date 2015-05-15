@@ -1,17 +1,21 @@
 class Change < ActiveRecord::Base
   belongs_to :currency_to  ,  class_name: "Currency"  
   belongs_to :currency_from, class_name: "Currency" 
-  #has_many   :change_type_changes
-  #has_many   :type_changes , through: :change_type_changes
-#  has_many   :type_changes
+  belongs_to :type_change, class_name: "TypeChange"
+  has_many   :change_historicals
 
   validates :currency_from, :currency_to, :start_dt, presence: true
   validate :validate_distinct_currency
+  before_validation :set_start
 
   def validate_distinct_currency
     if currency_from_id == currency_to_id
       errors.add(:currency_from_id, "can't be equal to currency_to_id")
     end
+  end
+
+  def set_start
+    self.start_dt=Date.today
   end
 
   # def validate_exist
@@ -28,9 +32,9 @@ class Change < ActiveRecord::Base
   #     chanClose.save
   #   end  
   # end
-  # def current
-  #   self.type_changes.last
-  # end
+  def current
+    self.change_historicals.last
+  end
 
   # def current_for_date(date)
   #   self.type_changes.reverse.detect {|n| Date.parse(n.start_dt.to_s) <= Date.parse(date)}
