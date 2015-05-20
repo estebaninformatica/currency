@@ -2,7 +2,8 @@ require 'test_helper'
 
 class CurrenciesControllerTest < ActionController::TestCase
   setup do
-    @currency = currencies(:one)
+    @currency = FactoryGirl.create(:currency)#currencies(:one)
+    @currency1= FactoryGirl.build(:currency)
   end
 
   test "should get index" do
@@ -18,7 +19,7 @@ class CurrenciesControllerTest < ActionController::TestCase
 
   test "should create currency" do
     assert_difference('Currency.count') do
-      post :create, currency: { abbreviation: @currency.abbreviation, description: @currency.description, name: @currency.name }
+      post :create, currency: { abbreviation: @currency1.abbreviation, description: @currency1.description, name: @currency1.name }
     end
 
     assert_redirected_to currency_path(assigns(:currency))

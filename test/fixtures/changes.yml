@@ -2,12 +2,14 @@
 
 one:
   currency_from: 1
-  currency_to: 1
+  currency_to: 2
+  type_change_id: 1
   start_dt: 2015-05-05
   end_dt: 2015-05-05
 
 two:
   currency_from: 1
-  currency_to: 1
+  currency_to: 3
+  type_change_id: 2
   start_dt: 2015-05-05
   end_dt: 2015-05-05

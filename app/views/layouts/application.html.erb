@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>ExchangeRate</title>
+  <title>Paridad Cambiaria</title>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
@@ -10,10 +10,10 @@
   <nav class="navbar navbar-default ">
     <div class="container-fluid">
       <div class="navbar-header">
-        <%= link_to 'Currency', currencies_path ,{:class=> "navbar-brand"} %>
-        <%= link_to 'Type of change', type_changes_path ,{:class=> "navbar-brand"} %>
-        <%= link_to 'Change', changes_path ,{:class=> "navbar-brand"} %>
-        <%= link_to 'Change history', change_historicals_path ,{:class=> "navbar-brand"} %>
+        <%= link_to 'MONEDAS', currencies_path ,{:class=> "navbar-brand"} %>
+        <%= link_to 'TIPOS DE CAMBIOS', type_changes_path ,{:class=> "navbar-brand"} %>
+        <%= link_to 'CAMBIOS', changes_path ,{:class=> "navbar-brand"} %>
+        <%= link_to 'HISTORIAL DE CAMBIOS', change_historicals_path ,{:class=> "navbar-brand"} %>
       </div>
     </div>
   </nav>

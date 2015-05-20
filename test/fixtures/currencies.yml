@@ -1,11 +1,16 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  description: MyText
-  name: MyString
+  description: Peso
+  name: Peso
   abbreviation: MyString
 
 two:
-  description: MyText
-  name: MyString
+  description: Euro
+  name: Euro
+  abbreviation: MyString
+
+three:
+  description: Dolar
+  name: Dolar
   abbreviation: MyString

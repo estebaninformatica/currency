@@ -25,6 +25,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Select2
 gem 'select2-rails', '~> 3.5.9.3'
 
+# factory_girl nos permite la  generacion de fixture
+gem "factory_girl_rails", "~> 4.0"
+
 #Iconos
 gem 'font-awesome-rails'
 #Manejo de fechas
@@ -47,5 +50,6 @@ group :development, :test do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+
 end
 

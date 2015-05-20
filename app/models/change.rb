@@ -4,7 +4,7 @@ class Change < ActiveRecord::Base
   belongs_to :type_change, class_name: "TypeChange"
   has_many   :change_historicals
 
-  validates :currency_from, :currency_to, :start_dt, presence: true
+  validates :currency_from, :currency_to, :type_change, :start_dt, presence: true
   validate :validate_distinct_currency, :validate_exist
 
   before_validation :set_start

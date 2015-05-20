@@ -26,7 +26,8 @@ function hide_form (id_form) {
 
 function unhide_form (id_form) {
   id_form='#' + id_form
-  $(id_form).show();//Form shows on button click
+  $(id_form).show();//Form shows on button click, for add value
+  $(".button_add").hide(); //hide the button add Change
 }
 
 

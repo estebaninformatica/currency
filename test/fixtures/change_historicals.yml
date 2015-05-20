@@ -1,11 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  change_id: 
-  type_change_id: 
+  change_id: 1 
   amount: 1.5
 
 two:
-  change_id: 
-  type_change_id: 
-  amount: 1.5
+  change_id: 1
+  amount: 2.5
