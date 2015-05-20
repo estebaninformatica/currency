@@ -1,20 +1,27 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-md-2">
+    <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @currency.name %>
-</p>
+    <p>
+      <strong>Moneda:</strong>
+      <%= @currency.name %>
+    </p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @currency.description %>
-</p>
+    <p>
+      <strong>Descripción:</strong>
+      <%= @currency.description %>
+    </p>
 
 
-<p>
-  <strong>Abbreviation:</strong>
-  <%= @currency.abbreviation %>
-</p>
+    <p>
+      <strong>Abreviación:</strong>
+      <%= @currency.abbreviation %>
+    </p>
 
-<%= link_to 'Edit', edit_currency_path(@currency) , :class => "btn btn-default"%> |
-<%= link_to 'Back', currencies_path , :class => "btn btn-default"%>
+    <%= link_to 'Editar', edit_currency_path(@currency) , :class => "btn btn-default"%> |
+    <%= link_to 'Volver', currencies_path , :class => "btn btn-default"%>
+  </div>
+  <div class="col-md-2"></div>
+  <div class="col-md-4"></div>
+  <div class="col-md-4"></div>
+</div>
