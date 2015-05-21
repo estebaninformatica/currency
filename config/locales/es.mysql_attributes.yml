@@ -1,0 +1,25 @@
+es:
+  activerecord:
+    models:
+      currency: "Moneda"
+      type_change: "Tipo de cambio"
+      change: "Cambio"
+    attributes:
+      currency:
+        name: "Moneda"
+        description: "Descripción"
+        abbreviation: "Abreviación"
+      type_change:
+        name: "Tipo de cambio"
+        start_dt: "Fecha desde"
+        end_dt: "Fecha hasta"
+      change:
+        currency_from_id: "Moneda desde"
+        currency_to_id: "Moneda hasta"
+        currency_from: "Moneda desde"
+        currency_to: "Moneda hasta"
+        type_change_id: "Tipo de cambio"
+        start_dt: "Fecha desde"
+        end_dt: "Fecha hasta"
+
+

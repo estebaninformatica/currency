@@ -1,0 +1,21 @@
+es:
+  helpers:
+    actions: "Acciones"
+    links:
+      back: "Atrás"
+      cancel: "Cancelar"
+      confirm: "Estás seguro?"
+      destroy: "Borrar"
+      new: "Nuevo"
+      take: "Tomar"
+      free: "Liberar"
+      edit: "Editar"
+      use: "Usar"
+      reuse: "Reusar"
+      disable: "Deshabilitar"
+      enable: "Habilitar"
+    titles:
+      edit: "Editar"
+      save: "Guardar"
+      new: "Nuevo"
+      delete: "Borrar"
