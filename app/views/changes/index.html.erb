@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Change Current</h1>
+<h1>Lista de Paridad Actual</h1>
 
 <table class="table table-hover">
   <thead>
@@ -23,14 +23,14 @@
       <td><%= change.type_change.name %></td>
       <td><%= change.current.start_dt unless change.current.nil? %></td>
       <td><%= change.current.amount unless change.current.nil? %></td>
-      <td class="button_add" ><%= link_to "Add change", '#', :onclick => "unhide_form(#{change.id})" ,:class => "btn btn-default" %></td>      
+      <td class="button_add" ><%= link_to "Agregar Paridad", '#', :onclick => "unhide_form(#{change.id})" ,:class => "btn btn-default" %></td>      
       <td>
         <div id="<%= change.id %>" hidden>
           <%= form_tag( controller: "change_historicals" ,action: "create", method: "POST"  ) do %>
-          <%= label_tag(:amount, "Amount") %>
+          <%= label_tag(:amount, "Relacion") %>
           <%= text_field( :change_historical, :amount ) %>
           <%= hidden_field(:change_historical, :change_id ,:value => change.id ) %>
-          <%= submit_tag("Save", :class => "btn btn-default") %>
+          <%= submit_tag("Guardar", :class => "btn btn-primary") %>
           <% end %>
         </div>
       </td>
@@ -41,4 +41,4 @@
 </table>
 
 <br>
-<%= link_to 'New change', new_change_path ,  :class => "btn btn-default" %>
+<%= link_to 'Nuevo Cambio', new_change_path ,  :class => "btn btn-default" %>

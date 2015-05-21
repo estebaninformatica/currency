@@ -18,9 +18,9 @@
         <td><%= currency.name %></td>
         <td><%= currency.description %></td>
         <td><%= currency.abbreviation %></td>
-        <td><%= link_to 'Ver', currency , {:class => "btn btn-default"} %></td>
+        <td><%= link_to 'Ver', currency , {:class => "btn btn-info"} %></td>
         <td><%= link_to 'Editar', edit_currency_path(currency) , :class => "btn btn-default" %></td>
-        <td><%= link_to 'Eliminar', currency, method: :delete, data: {confirm: 'Esta seguro que desea eliminar?'}, :class => "btn btn-default" %></td>
+        <td><%= link_to 'Eliminar', currency, method: :delete, data: {confirm: 'Esta seguro que desea eliminar?'}, :class => "btn btn-danger" %></td>
       </tr>
     <% end %>
   </tbody>

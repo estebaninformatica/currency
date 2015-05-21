@@ -1,7 +1,7 @@
 
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Type Changes</h1>
+<h1>Lista de tipos de cambios</h1>
 
 <table class="table table-hover">
   <thead>
@@ -19,9 +19,9 @@
       <td><%= typeChange.name %></td>
       <td><%= typeChange.start_dt %></td>
       <td><%= typeChange.end_dt %></td>
-      <td><%= link_to 'Show', typeChange , :class => "btn btn-default" %></td>
-      <td><%= link_to 'Edit', edit_type_change_path(typeChange) , :class => "btn btn-default" %></td>
-        <td><%= link_to 'Destroy', typeChange, method: :delete, data: {confirm: 'Are you sure?'}, :class => "btn btn-default" %></td>
+      <td><%= link_to 'Ver', typeChange , :class => "btn btn-info" %></td>
+      <td><%= link_to 'Editar', edit_type_change_path(typeChange) , :class => "btn btn-default" %></td>
+        <td><%= link_to 'Eliminar', typeChange, method: :delete, data: {confirm: 'Are you sure?'}, :class => "btn btn-danger" %></td>
 
 
     </tr>
@@ -30,4 +30,4 @@
 </table>
 
 <br>
-<%= link_to 'New Type Changes', new_type_change_path ,  :class => "btn btn-default" %>
+<%= link_to 'Nuevo Tipo de Cambio', new_type_change_path ,  :class => "btn btn-default" %>
