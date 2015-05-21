@@ -2,7 +2,7 @@ class ChangesController < ApplicationController
   before_action :set_change, only: [:show , :edit]
 
   def index
-    @changes=Change.all
+    @changes=Change.all.order(:currency_from_id, :currency_to_id)
   end
 
   def show

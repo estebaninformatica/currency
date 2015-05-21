@@ -2,7 +2,7 @@ class ChangeHistoricalsController < ApplicationController
   before_action :set_change_historical, only: [:show , :edit]
   
   def index
-    @changeHistoricals=ChangeHistorical.all
+    @changeHistoricals=ChangeHistorical.all.order(:change_id)
   end
 
   def show
