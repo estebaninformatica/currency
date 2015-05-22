@@ -21,7 +21,7 @@ describe ChangeHistorical do
       change_historical_current.change_id=change_historical.change_id
       change_historical_current.save
       change_historical_previous=ChangeHistorical.find(change_historical.id)
-     change_historical_previous.end_dt.wont_be_nil
+      change_historical_previous.end_dt.wont_be_nil
     end
   end
 end

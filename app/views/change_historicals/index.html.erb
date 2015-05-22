@@ -6,8 +6,8 @@
 <table class="table table-hover">
   <thead>
     <tr>
-      <th>Moneda desde</th>
-      <th>Moneda hasta</th>
+      <th>Desde</th>
+      <th>Hacia</th>
       <th>Tipo de cambio</th>
       <th>Fecha desde</th>
       <th>Fecha hasta</th>
@@ -26,8 +26,6 @@
       <td><%= changeHist.end_dt %></td>
       <td><%= changeHist.amount %></td>
       <td><%= link_to 'Ver', changeHist , :class => "btn btn-info" %></td>
-
-
     </tr>
     <% end %>
   </tbody>
