@@ -2,7 +2,7 @@ class TypeChangesController < ApplicationController
   before_action :set_type_change, only: [:show , :edit, :destroy]
 
   def index
-    @typeChanges=TypeChange.all
+    @typeChanges=TypeChange.where(drop: :false)
   end
 
   def show
@@ -19,7 +19,7 @@ class TypeChangesController < ApplicationController
     @typeChange=TypeChange.new(type_changes_params)
     respond_to do |format|
       if @typeChange.save
-        format.html { redirect_to @typeChange, notice: 'Type change was successfully created.' }
+        format.html { redirect_to @typeChange, notice: 'Tipo de cambio se ha creado correctamente.' }
         #format.json { render :show, status: :created, location: @currency }
       else
         format.html { render :new }
@@ -29,9 +29,10 @@ class TypeChangesController < ApplicationController
   end
 
    def destroy
-    @typeChange.destroy
+    @typeChange.drop_logic
+    @typeChange.save
     respond_to do |format|
-      format.html { redirect_to type_changes_url, notice: 'Type of change was successfully destroyed.' }
+      format.html { redirect_to type_changes_url, notice: 'Tipo de cambio fue eliminado.' }
       #format.json { head :no_content }
     end
   end

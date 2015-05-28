@@ -4,7 +4,7 @@ class CurrenciesController < ApplicationController
   # GET /currencies
   # GET /currencies.json
   def index
-    @currencies = Currency.all
+    @currencies = Currency.where(drop: :false)
   end
 
   # GET /currencies/1
@@ -54,7 +54,8 @@ class CurrenciesController < ApplicationController
   # DELETE /currencies/1
   # DELETE /currencies/1.json
   def destroy
-    @currency.destroy
+    @currency.drop_logic
+    @currency.save
     respond_to do |format|
       format.html { redirect_to currencies_url, notice: 'Currency was successfully destroyed.' }
       format.json { head :no_content }

@@ -4,6 +4,7 @@ class CreateTypeChanges < ActiveRecord::Migration
       t.string :name
       t.datetime :start_dt
       t.datetime :end_dt
+      t.boolean :drop , default: false
 
       t.timestamps null: false
     end

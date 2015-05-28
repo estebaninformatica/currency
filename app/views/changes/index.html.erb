@@ -22,7 +22,7 @@
       <td><%= change.currency_to.name %></td>
       <td><%= change.type_change.name %></td>
       <td><%= change.current.start_dt unless change.current.nil? %></td>
-      <td><%= change.current.amount unless change.current.nil? %></td>
+      <td><%= number_with_precision(change.current.amount, precision: 2, separator: '.', strip_insignificant_zeros: true)  unless change.current.nil? %></td>
       <td class="button_add" ><%= link_to "Agregar Paridad", '#', :onclick => "unhide_form(#{change.id})" ,:class => "btn btn-default" %></td>      
       <td>
         <div id="<%= change.id %>" hidden>

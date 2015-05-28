@@ -4,6 +4,7 @@ class CreateCurrencies < ActiveRecord::Migration
       t.string :name
       t.text :description
       t.string :abbreviation
+      t.boolean :drop , default: false
 
       t.timestamps null: false
     end

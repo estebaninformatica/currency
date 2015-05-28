@@ -24,7 +24,7 @@
       <td><%= changeHist.change.type_change.name %></td>
       <td><%= changeHist.start_dt %></td>
       <td><%= changeHist.end_dt %></td>
-      <td><%= changeHist.amount %></td>
+      <td><%= number_with_precision(changeHist.amount, precision: 2, separator: '.', strip_insignificant_zeros: true) %></td>
       <td><%= link_to 'Ver', changeHist , :class => "btn btn-info" %></td>
     </tr>
     <% end %>

@@ -19,7 +19,7 @@ class ChangeHistoricalsController < ApplicationController
     @changeHistorical=ChangeHistorical.new(change_historical_params)
     respond_to do |format|
       if @changeHistorical.save
-        format.html { redirect_to @changeHistorical.change, notice: 'New value for Change was successfully created.' }
+        format.html { redirect_to changes_path, notice: 'New value for Change was successfully created.' }
         #format.json { render :show, status: :created, location: @currency }
       else
         format.html { render :new }

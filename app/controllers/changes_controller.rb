@@ -2,7 +2,9 @@ class ChangesController < ApplicationController
   before_action :set_change, only: [:show , :edit]
 
   def index
-    @changes=Change.all.order(:currency_from_id, :currency_to_id)
+    #@changes=Change.order(:currency_from_id, :currency_to_id)
+    @changes=Change.joins(:type_change, :currency_from, :currency_to).where(type_changes: {drop: false}, currencies: {drop: false}, currency_tos_changes:{drop:false})
+
   end
 
   def show
@@ -12,8 +14,8 @@ class ChangesController < ApplicationController
   end
 
   def new
-    @currencies=Currency.all
-    @type_changes=TypeChange.all
+    @currencies=Currency.where(drop: :false)
+    @type_changes=TypeChange.where(drop: :false)
     @change=Change.new
   end
 
@@ -22,12 +24,12 @@ class ChangesController < ApplicationController
 
     respond_to do |format|
       if @change.save
-        format.html { redirect_to @change, notice: 'Change was successfully created.' }
+        format.html { redirect_to @change, notice: 'Cambio ha sido creado correctamente.' }
           #format.json { render :show, status: :created, location: @currency }
         else
           format.html { 
-            @currencies=Currency.all
-            @type_changes=TypeChange.all
+            @currencies=Currency.where(drop: :false)
+            @type_changes=TypeChange.where(drop: :false)
             render :new }
           #format.json { render json: @currency.errors, status: :unprocessable_entity }
         end

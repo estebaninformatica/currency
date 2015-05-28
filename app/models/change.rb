@@ -11,7 +11,7 @@ class Change < ActiveRecord::Base
 
   def validate_distinct_currency
     if currency_from_id == currency_to_id
-      errors.add(:currency_from_id, "can't be equal to currency_to_id")
+      errors.add(:currency_from_id, "no puede ser igual a Moneda hasta")
     end
   end
 
@@ -21,7 +21,7 @@ class Change < ActiveRecord::Base
 
   def validate_exist
     if not Change.where(currency_from_id: currency_from_id , currency_to_id: currency_to_id, type_change_id: type_change_id ).empty?
-      errors.add(:id, "This change exist")
+      errors.add(:id, "Este cambio ya existe")
     end
   end
 
