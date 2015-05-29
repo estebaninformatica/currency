@@ -28,6 +28,7 @@ gem 'select2-rails', '~> 3.5.9.3'
 # factory_girl nos permite la  generacion de fixture
 gem "factory_girl_rails", "~> 4.0"
 
+gem 'simple_form'
 #Iconos
 gem 'font-awesome-rails'
 #Manejo de fechas

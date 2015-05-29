@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-md-2">
-    <%= form_for(@typeChange) do |f| %>
+    <%= simple_form_for(@typeChange) do |f| %>
     <% if @typeChange.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@typeChange.errors.count, "error") %> prohibited this type change from being saved:</h2>
