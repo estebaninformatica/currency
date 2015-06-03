@@ -1,11 +1,22 @@
 class ExchangeParity
-  include ActiveModel::Model
+ # include ActiveModel::Model
+  include ActiveModel::Conversion
   include ActiveModel::Validations
-
+  extend ActiveModel::Naming
+  
   attr_accessor :difference, :amount_peso_dolar, :amount_peso_euro, :amount_dolar_euro
 
   validates_presence_of :difference, :amount_peso_dolar, :amount_peso_euro, :amount_dolar_euro 
   
+  def initialize(attributes = {})
+    attributes.each do |name, value|
+      send("#{name}=", value)
+    end
+  end
+
+
+
+
   #Peso/Dolar BSP
   def create_change_for_BSP
     category_BSP=Category.find_by(name: 'BSP').type_change.take
@@ -34,5 +45,7 @@ class ExchangeParity
     change_dolar_euro=Change.new(type_change_id: type_change_dolar_euro.id, amount: amount_dolar_euro)
     change_dolar_euro.save
   end
-
+   def persisted?
+    false
+  end
 end

@@ -29,5 +29,5 @@ es:
       exchange_parity: "Paridad Cambiaria"
     attributes:
        exchange_parity:
-        amount: "Relación"
+        amount_peso_dolar: "Peso / Dolar"
         difference: "Diferencia"

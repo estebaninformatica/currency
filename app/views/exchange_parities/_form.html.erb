@@ -1,77 +1,83 @@
  <%= simple_form_for(@exchange_parity) do |f| %>
-<div class="row">
+  <%= f.error_notification %>
+ <div class="row">
   <div class="col-md-2"></div>
   <div class="col-md-10">
     <div class="row">
       <div class="col-md-2">
-        <h4>Peso / Dolar </h4> 
+        <div class="field">
+          
+           <%= f.label :amount_peso_dolar , class: 'control-label' %>
+
+       </div>
+     </div>
+     <div class="col-md-1"></div>
+     <div class="col-md-2">
+      <div class="field">
+        <%= f.input_field :amount_peso_dolar , class: 'form-control',  placeholder: "Ingrese valor"  ,html5: true%>
+        <%= f.input_field :difference, as: :float, hidden: true %>
+       
+      </div>
+    </div>
+    <div class="col-md-2"></div>
+    <div class="col-md-5">
+      <div class="form-group">
+        <%= submit_tag("Guardar"  , :class => 'btn btn-success') %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+
+    <div class="col-md-6">
+      <div class="row">
+        <div class="col-md-2">
+         <h5>BSP:</h5> 
+       </div>
+       <div class="col-md-1"></div>
+       <div class="col-md-3">
+        <div class="form-group">
+          <input type="float" class="form-control"id="peso_dolar_bsp" readonly >
+        </div>
       </div>
       <div class="col-md-1"></div>
       <div class="col-md-2">
-        <div class="field">
-          <%= f.input_field :amount_peso_dolar ,as: :float , class: 'form-control',  placeholder: "Ingrese valor"  ,html5: true%>
-          <%= f.input_field :difference, as: :float, hidden: true %>
-        </div>
+        <h5>Terrestre:</h5>
       </div>
-      <div class="col-md-2"></div>
-      <div class="col-md-5">
+      <div class="col-md-1"></div>
+      <div class="col-md-3">
         <div class="form-group">
-          <%= submit_tag("Guardar"  , :class => 'btn btn-success') %>
+          <input type="float" class="form-control" id="peso_dolar_terrestre" readonly >
         </div>
       </div>
     </div>
-    <div class="row">
-
-      <div class="col-md-6">
-        <div class="row">
-          <div class="col-md-2">
-           <h5>BSP:</h5> 
-         </div>
-         <div class="col-md-1"></div>
-         <div class="col-md-3">
-          <div class="form-group">
-            <input type="float" class="form-control"id="peso_dolar_bsp" readonly >
-          </div>
-        </div>
-        <div class="col-md-1"></div>
-        <div class="col-md-2">
-          <h5>Terrestre:</h5>
-        </div>
-        <div class="col-md-1"></div>
-        <div class="col-md-3">
-          <div class="form-group">
-            <input type="float" class="form-control" id="peso_dolar_terrestre" readonly >
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-6"></div>
-  </div> 
-  <hr>
-  <div class="row">
-    <div class="col-md-2">
-      <h4>Peso / Euro </h4> 
-    </div>
-    <div class="col-md-1"></div>
-    <div class="col-md-2">
-      <div class="form-group">
+  </div>
+  <div class="col-md-6"></div>
+</div> 
+<hr>
+<div class="row">
+  <div class="col-md-2">
+    <h4>Peso / Euro </h4> 
+  </div>
+  <div class="col-md-1"></div>
+  <div class="col-md-2">
+    <div class="form-group">
       <%= f.input_field :amount_peso_euro  ,as: :float , class: 'form-control',  placeholder: "Ingrese valor"  ,html5: true %>
-      </div>
     </div>
   </div>
-  <hr>
-  <div class="row">
-    <div class="col-md-2">
-      <h4>Dolar / Euro </h4> 
-    </div>
-    <div class="col-md-1"></div>
-    <div class="col-md-2">
-      <div class="form-group">
-        <%= f.input_field :amount_dolar_euro ,as: :float , class: 'form-control',  placeholder: "Ingrese valor"  ,html5: true %>
-      </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-md-2">
+    <h4>Dolar / Euro </h4> 
+  </div>
+  <div class="col-md-1"></div>
+  <div class="col-md-2">
+    <div class="form-group">
+      <%= f.input_field :amount_dolar_euro ,as: :float , class: 'form-control',  placeholder: "Ingrese valor"  ,html5: true %>
     </div>
   </div>
-  </div>
+</div>
+</div>
 </div>
 
 <% end %>

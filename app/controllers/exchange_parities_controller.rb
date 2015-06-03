@@ -1,13 +1,15 @@
 class ExchangeParitiesController < ApplicationController
+  #Manages the creation of the 4 changes
   def new
-    @exchange_parity=ExchangeParity.new(difference: Category.find_by(name: 'BSP').type_change.take.difference)
+    @exchange_parity=ExchangeParity.new()
+    @exchange_parity.difference= Category.find_by(name: 'BSP').type_change.take.difference
+    @exchange_parity
   end
 
   def create
     @exchange_parity=ExchangeParity.new(exchange_parities_params)
-   
     respond_to do |format|
-    
+     
       if @exchange_parity.valid? 
         @exchange_parity.create_change_for_BSP
         @exchange_parity.create_change_for_terrestre
