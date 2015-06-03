@@ -1,26 +1,34 @@
-<div class="row">
-  <div class="col-md-4">
-    <p id="notice"><%= notice %></p>
-    <div class="field">
-    <p>
-      <strong>Tipo de cambio:</strong>
-      <%= @typeChange.name %>
-    </p>
+<p id="notice"><%= notice %></p>
 
-    <p>
-      <strong>Fecha Desde:</strong>
-      <%= @typeChange.start_dt %>
-    </p>
+<p>
+  <strong>Desde:</strong>
+  <%= @typeChange.currency_from.name %>
+</p>
 
-    <p>
-      <strong>Fecha Hasta:</strong>
-      <%= @typeChange.end_dt %>
-    </p>
+<p>
+  <strong>A:</strong>
+  <%= @typeChange.currency_to.name %>
+</p>
+
+<p>
+  <strong>Categoria:</strong>
+  <%= @typeChange.category.name %>
+</p>
+<p>
+  <strong>Diferencia:</strong>
+  <%= @typeChange.difference %>
+</p>
+
+<p>
+  <strong>Fecha de inicio:</strong>
+  <%= @typeChange.start_dt %>
+</p>
+
+<p>
+  <strong>Fecha de fin:</strong>
+  <%= @typeChange.end_dt %>
+</p>
 
 
-   
-  </div>
-  
-  <div class="col-md-4"></div>
-  <div class="col-md-4"></div>
-</div>
+<%= link_to 'Edit', edit_type_change_path(@typeChange) , :class => "btn btn-default" %> |
+<%= link_to 'Back', type_changes_path , :class => "btn btn-default"%>

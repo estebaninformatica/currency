@@ -1,42 +1,23 @@
 class Change < ActiveRecord::Base
-  belongs_to :currency_to  ,  class_name: "Currency"  
-  belongs_to :currency_from, class_name: "Currency" 
-  belongs_to :type_change, class_name: "TypeChange"
-  has_many   :change_historicals
+  belongs_to        :type_change
 
-  validates :currency_from, :currency_to, :type_change, :start_dt, presence: true
-  validate :validate_distinct_currency, :validate_exist
-
-  before_validation :set_start
-
-  def validate_distinct_currency
-    if currency_from_id == currency_to_id
-      errors.add(:currency_from_id, "no puede ser igual a Moneda hasta")
-    end
-  end
+  before_create     :set_start
+  after_create      :close_before_change 
+  
+  validates :type_change_id, :amount, presence: true
 
   def set_start
-    self.start_dt=Date.today
+    self.start_dt=Time.now
   end
 
-  def validate_exist
-    if not Change.where(currency_from_id: currency_from_id , currency_to_id: currency_to_id, type_change_id: type_change_id ).empty?
-      errors.add(:id, "Este cambio ya existe")
-    end
-  end
-
-
-  def current
-    self.change_historicals.last
-  end
-
-  #method for calendar
-  def current_for_date(date)
-    changes_for_date=[]
-    curr_for_date=self.change_historicals.reverse.detect {|n| Date.parse(n.start_dt.to_s) <= Date.parse(date)}
-    changes_for_date << curr_for_date
-    changes_for_date << self.change_historicals.detect {|chan| chan.start_dt = curr_for_date.end_dt } unless curr_for_date.end_dt.nil?
-    changes_for_date
+  def close_before_change
+    if self.type_change.all_changes.size > 1
+      changeHistory=self.type_change.all_changes.last(2).first 
+      changeHistory.end_dt=self.start_dt
+      changeHistory.save
+    end 
   end
 
 end
+
+

@@ -17,7 +17,15 @@
 //= require select2
 //= require select2_locale_es
 
-$(document).ready(function() { $(".select2").select2(); });
+$(document).ready(function() { 
+  $(".select2").select2(); 
+  $("#exchange_parity_amount_peso_dolar").keyup(function(){
+        $("#peso_dolar_bsp").val($("#exchange_parity_amount_peso_dolar").val());
+        amount=parseFloat($("#exchange_parity_amount_peso_dolar").val());
+        difference=parseFloat(($("#exchange_parity_difference").val()));
+        $("#peso_dolar_terrestre").val(parseFloat(amount+ difference));
+    });
+});
 
 function hide_form (id_form) {
   id_form='#'+id_form

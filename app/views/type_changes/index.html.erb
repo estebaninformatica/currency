@@ -1,33 +1,49 @@
+<div class="row">
+ <div class="col-md-1">
+ </div>
+ <div class="col-md-10">
+   <p id="notice"><%= notice %></p>
 
-<p id="notice"><%= notice %></p>
+   <h1>Lista de Paridad Actual</h1>
+   <div class="grilla">
+     <table class="table table-bordered ">
+      <thead>
+        <tr class="info">
+          <th>Relación</th>
+          <th>Descripción</th>
+          <th>Historial</th>
+        </tr>
+      </thead>
+      <% currency_from = ' ' %>
+      <% currency_to = ' ' %>
+      <tbody>
+        <% @typeChanges.each do | typeChange | %>
+        <% if  typeChange.currency_from.name != currency_from or typeChange.currency_to.name != currency_to %>
+        <tr  class="tr-body-especial success">
+          <td colspan="3" style="text-align: center" >
+            <%= typeChange.currency_from.name + " / " + typeChange.currency_to.name %>
+          </td>
+          <% currency_from = typeChange.currency_from.name %>
+          <% currency_to = typeChange.currency_to.name %>
+        </tr>
+        <% end %>
+        <tr class="info">
+          <td><%= number_with_precision(typeChange.current.amount, precision: 2, separator: '.', strip_insignificant_zeros: true)  unless typeChange.current.nil? %></td>
+          <td><%= typeChange.category.name %></td>
+          <td class= <%=typeChange.id %> > Ver Para:
+           <%= date_field(:change, typeChange.id, class: 'input-sm') %>
+           <div id="historic<%= typeChange.id %>"></div>
+         </td>
+       </tr>
 
-<h1>Lista de tipos de cambios</h1>
+       <% end %>
+     </tbody>
+   </table>
+ </div>
 
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th>Description</th>
-      <th>Desde</th>
-      <th>Hasta</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @typeChanges.each do |typeChange| %>
-    <tr>
-      <td><%= typeChange.name %></td>
-      <td><%= typeChange.start_dt %></td>
-      <td><%= typeChange.end_dt %></td>
-      <td><%= link_to 'Ver', typeChange , :class => "btn btn-info" %></td>
-      <td><%= link_to 'Editar', edit_type_change_path(typeChange) , :class => "btn btn-default" %></td>
-        <td><%= link_to 'Eliminar', typeChange, method: :delete, data: {confirm: 'Are you sure?'}, :class => "btn btn-danger" %></td>
-
-
-    </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-<%= link_to 'Nuevo Tipo de Cambio', new_type_change_path ,  :class => "btn btn-default" %>
+ <br>
+ <%= link_to 'Nuevo Tipo de Cambio', new_type_change_path ,  :class => "btn btn-default" %>
+ <%= link_to 'Nuevo Cambio',  new_exchange_parity_path ,  :class => "btn btn-default" %>
+</div>
+<div class="col-md-1"></div>
+</div>

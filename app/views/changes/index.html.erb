@@ -1,44 +1,34 @@
+
 <p id="notice"><%= notice %></p>
 
-<h1>Lista de Paridad Actual</h1>
+<h1>Lista de categorias</h1>
 
 <table class="table table-hover">
   <thead>
     <tr>
       <th>Desde</th>
-      <th>Hacia</th>
-      <th>Tipo de cambio</th>
+      <th>A</th>
+      <th>Categoria</th>
       <th>Fecha desde</th>
-      <th>Relación</th>
-      <th>Operacion</th>
-      
+      <th>Fecha hasta</th>
+      <th>Relacion</th>
+      <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
-    <% @changes.each do | change | %>
+    <% @changes.each do |change| %>
     <tr>
-      <td><%= change.currency_from.name %></td>
-      <td><%= change.currency_to.name %></td>
-      <td><%= change.type_change.name %></td>
-      <td><%= change.current.start_dt unless change.current.nil? %></td>
-      <td><%= number_with_precision(change.current.amount, precision: 2, separator: '.', strip_insignificant_zeros: true)  unless change.current.nil? %></td>
-      <td class="button_add" ><%= link_to "Agregar Paridad", '#', :onclick => "unhide_form(#{change.id})" ,:class => "btn btn-default" %></td>      
-      <td>
-        <div id="<%= change.id %>" hidden>
-          <%= form_tag( controller: "change_historicals" ,action: "create", method: "POST"  ) do %>
-          <%= label_tag(:amount, "Relacion") %>
-          <%= text_field( :change_historical, :amount ) %>
-          <%= hidden_field(:change_historical, :change_id ,:value => change.id ) %>
-          <%= submit_tag("Guardar", :class => "btn btn-primary") %>
-          <% end %>
-        </div>
-      </td>
-    </div> 
-  </tr>
-  <% end %>
-</tbody>
+      <td><%= change.type_change.currency_from.name %></td>
+      <td><%= change.type_change.currency_to.name %></td>
+      <td><%= change.type_change.category.name %></td>
+      <td><%= change.start_dt %></td>
+      <td><%= change.end_dt %></td>
+      <td><%= change.amount %></td>
+      <td><%= link_to 'Ver', change , :class => "btn btn-info" %></td>
+    </tr>
+    <% end %>
+  </tbody>
 </table>
 
 <br>
-<%= link_to 'Nuevo Cambio', new_change_path ,  :class => "btn btn-default" %>

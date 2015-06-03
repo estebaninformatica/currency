@@ -11,33 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150514163953) do
+ActiveRecord::Schema.define(version: 20150602140703) do
 
-  create_table "change_historicals", force: :cascade do |t|
-    t.integer  "change_id",  limit: 4
-    t.datetime "start_dt"
-    t.datetime "end_dt"
-    t.float    "amount",     limit: 24
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
+  create_table "categories", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.date     "start_dt"
+    t.date     "end_dt"
+    t.boolean  "drop",       limit: 1,   default: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
   end
-
-  add_index "change_historicals", ["change_id"], name: "index_change_historicals_on_change_id", using: :btree
 
   create_table "changes", force: :cascade do |t|
-    t.integer  "currency_id",      limit: 4
-    t.integer  "currency_from_id", limit: 4
-    t.integer  "currency_to_id",   limit: 4
-    t.integer  "type_change_id",   limit: 4
+    t.integer  "type_change_id", limit: 4
     t.datetime "start_dt"
     t.datetime "end_dt"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.float    "amount",         limit: 24
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
-  add_index "changes", ["currency_from_id"], name: "index_changes_on_currency_from_id", using: :btree
-  add_index "changes", ["currency_id"], name: "index_changes_on_currency_id", using: :btree
-  add_index "changes", ["currency_to_id"], name: "index_changes_on_currency_to_id", using: :btree
   add_index "changes", ["type_change_id"], name: "index_changes_on_type_change_id", using: :btree
 
   create_table "currencies", force: :cascade do |t|
@@ -50,13 +43,20 @@ ActiveRecord::Schema.define(version: 20150514163953) do
   end
 
   create_table "type_changes", force: :cascade do |t|
-    t.string   "name",       limit: 255
+    t.integer  "currency_id",      limit: 4
+    t.integer  "currency_from_id", limit: 4
+    t.integer  "currency_to_id",   limit: 4
+    t.integer  "category_id",      limit: 4
+    t.float    "difference",       limit: 24
     t.datetime "start_dt"
     t.datetime "end_dt"
-    t.boolean  "drop",       limit: 1,   default: false
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
-  add_foreign_key "change_historicals", "changes"
+  add_index "type_changes", ["category_id"], name: "index_type_changes_on_category_id", using: :btree
+  add_index "type_changes", ["currency_from_id"], name: "index_type_changes_on_currency_from_id", using: :btree
+  add_index "type_changes", ["currency_id"], name: "index_type_changes_on_currency_id", using: :btree
+  add_index "type_changes", ["currency_to_id"], name: "index_type_changes_on_currency_to_id", using: :btree
+
 end

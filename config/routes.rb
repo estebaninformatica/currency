@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
   resources :currencies
+  resources :categories
   resources :type_changes
-  resources :change_historicals
   resources :changes
+  resources :exchange_parities
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
